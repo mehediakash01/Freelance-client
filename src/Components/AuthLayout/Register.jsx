@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import SocialLogin from "./SocialLogin";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Utilities/Auth/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [error, serError] = useState("");
   const handleNewUser = (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate('/')
       })
       .catch((error) => {
         serError(error.Message);

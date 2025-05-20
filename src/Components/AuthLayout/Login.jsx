@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import SocialLogin from "./SocialLogin";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Utilities/Auth/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const {state}=useLocation();
+
+    
   const { loginUser } = useContext(AuthContext);
-  const [error, serError] = useState("");
+  const [error, setError] = useState("");
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,10 +27,11 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate(state||'/');
       })
       .catch((error) => {
         const errorMessage = error.message;
-        serError(errorMessage);
+        setError(errorMessage);
       });
   };
 
