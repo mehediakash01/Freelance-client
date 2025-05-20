@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Utilities/Auth/AuthProvider";
 
 const Header = () => {
-   const links = <ul className="space-x-4" >
-  <NavLink to="/">Home</NavLink>
-  <NavLink to="/addTask">Add-Task</NavLink>
-  <NavLink to="/BrowseTask">Browse-Tasks</NavLink>
-  <NavLink to="/PostedTask">My-Posted-Tasks</NavLink>
-</ul>;
+  const { user, isLoading } = useContext(AuthContext);
 
-  
+  const links = (
+    <ul className="space-x-4">
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/addTask">Add-Task</NavLink>
+      <NavLink to="/BrowseTask">Browse-Tasks</NavLink>
+      <NavLink to="/PostedTask">My-Posted-Tasks</NavLink>
+    </ul>
+  );
+
+  isLoading && (
+    <div>
+      <span className="loading loading-bars loading-xs"></span>
+      <span className="loading loading-bars loading-sm"></span>
+      <span className="loading loading-bars loading-md"></span>
+      <span className="loading loading-bars loading-lg"></span>
+      <span className="loading loading-bars loading-xl"></span>
+    </div>
+  );
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -35,19 +48,27 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-          {links}
+            {links}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
-     <Link to={'/login'}><button className="btn btn-accent">Login</button></Link>
-     <Link to={'/register'}><button className="btn btn-accent">Register</button></Link>
+        {user ? (
+          <p>{user?.email}</p>
+        ) : (
+          <div>
+            <Link to={"/login"}>
+              <button className="btn btn-accent">Login</button>
+            </Link>
+            <Link to={"/register"}>
+              <button className="btn btn-accent">Register</button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

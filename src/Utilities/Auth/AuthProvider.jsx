@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import { app } from "../Firebase.config";
 import Swal from "sweetalert2";
@@ -47,12 +48,18 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // update user profile
+  const UpdateUser =(userInfo)=>{
+    updateProfile(auth.currentUser, userInfo
+)
+  }
+
   // setUp the UserState
 
   useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      setUser(user); 
+      setUser(currentUser); 
     } else {
       setUser(null);
     }
@@ -71,6 +78,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     isLoading,
     setLoading,
+    UpdateUser,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

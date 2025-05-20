@@ -5,7 +5,7 @@ import { AuthContext } from "../../Utilities/Auth/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, UpdateUser,setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, serError] = useState("");
   const handleNewUser = (e) => {
@@ -19,6 +19,14 @@ const Register = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        UpdateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+           setUser({ ...user, displayName: name, photoURL: photo });
+           
+          })
+          .catch((error) => {
+            console.log(error.Message);
+          });
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -26,7 +34,7 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         serError(error.Message);
