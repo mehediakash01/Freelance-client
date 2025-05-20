@@ -1,39 +1,72 @@
-import React from 'react';
+import React, { useContext, useState } from "react";
+import SocialLogin from "./SocialLogin";
+import { Link } from "react-router";
+import { AuthContext } from "../../Utilities/Auth/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    return (
-        <div className="flex min-h-screen items-center justify-center bg-base-200">
-      <form className="card w-full max-w-sm shadow-xl bg-base-100 p-6">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+  const { loginUser } = useContext(AuthContext);
+  const [error, serError] = useState("");
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "login successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        serError(errorMessage);
+      });
+  };
 
-        <div className="form-control mb-4">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="input input-bordered"
-          />
-        </div>
-
-        <div className="form-control mb-6">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
+  return (
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-8">
+      <h1 className="font-bold text-4xl my-3 text-center">Login Now!</h1>
+      <div className="card-body">
+        <form onSubmit={handleSignIn} className="fieldset">
+          {/* email */}
+          <label className="label">Email</label>
           <input
             type="email"
-            placeholder="email@example.com"
-            className="input input-bordered"
+            name="email"
+            className="input"
+            placeholder="Enter Your email"
+            required
           />
-        </div>
+          {/* password */}
 
-        <button type="submit" className="btn btn-primary w-full">
-          Submit
-        </button>
-      </form>
+          <label className="label">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="input"
+            placeholder="Enter Your Password"
+            required
+          />
+          <button>Forget password?</button>
+          {error && <p className="text-xs text-red-500">{error}</p>}
+
+          <button type="submit" className="btn btn-neutral mt-4">
+            Login
+          </button>
+          <Link to={"/register"}>Don't have an account? Register</Link>
+        </form>
+
+        <SocialLogin></SocialLogin>
+      </div>
     </div>
-    );
+  );
 };
 
 export default Login;

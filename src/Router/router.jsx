@@ -6,13 +6,11 @@ import Login from "../Components/AuthLayout/Login";
 import Register from "../Components/AuthLayout/Register";
 
 export const router = createBrowserRouter([
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
+
   {
     path: "/",
-    Component: Root,
+ element:<Root></Root>,
+   
     children: [{ index: true, Component: Home },
         {
             path:'/login',
