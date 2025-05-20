@@ -5,7 +5,7 @@ import { AuthContext } from "../../Utilities/Auth/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, UpdateUser,setUser } = useContext(AuthContext);
+  const { createUser, UpdateUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, serError] = useState("");
   const handleNewUser = (e) => {
@@ -21,8 +21,7 @@ const Register = () => {
         const user = userCredential.user;
         UpdateUser({ displayName: name, photoURL: photo })
           .then(() => {
-           setUser({ ...user, displayName: name, photoURL: photo });
-           
+            setUser({ ...user, displayName: name, photoURL: photo });
           })
           .catch((error) => {
             console.log(error.Message);

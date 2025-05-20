@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Utilities/Auth/AuthProvider";
 
 const Header = () => {
-  const { user, isLoading } = useContext(AuthContext);
+  const { user, isLoading , logOut} = useContext(AuthContext);
+  const [isHover, setIsHover] = useState(false);
 
   const links = (
     <ul className="space-x-4">
@@ -58,9 +59,29 @@ const Header = () => {
       </div>
       <div className="navbar-end gap-2">
         {user ? (
-          <p>{user?.email}</p>
+          <div
+            className="relative "
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+          >
+            <div>
+              <img
+                className="w-12 h-12 rounded-full ring-0 outline-none transition-all duration-300 ease-in-out hover:ring-2 hover:ring-gray-200 "
+                src={user.photoURL}
+                alt=""
+              />
+            </div>
+
+            {isHover && (
+              <div className="absolute -ml-56 mt-1 z-10 bg-gray-400 p-2 rounded-sm space-y-2">
+                <p className="opacity-50">{user.displayName}</p>
+                <p className="opacity-50">{user.email}</p>
+                <button onClick={()=> logOut()} className="font-semibold ">Log-Out</button>
+              </div>
+            )}
+          </div>
         ) : (
-          <div>
+          <div className="space-x-2">
             <Link to={"/login"}>
               <button className="btn btn-accent">Login</button>
             </Link>

@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { app } from "../Firebase.config";
@@ -14,8 +15,8 @@ import Swal from "sweetalert2";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user,setUser] = useState(null);
-  const [isLoading,setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [isLoading, setLoading] = useState(true);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   // create User
@@ -32,6 +33,7 @@ const AuthProvider = ({ children }) => {
       .then((result) => {
         // The signed-in user info.
         const user = result.user;
+        console.log(user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -39,6 +41,7 @@ const AuthProvider = ({ children }) => {
           showConfirmButton: false,
           timer: 1500,
         });
+        return user;
       })
       .catch((error) => {
         // Handle Errors here.
@@ -48,27 +51,43 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // signOut user
+
+  const logOut = () => {
+    return signOut(auth)
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign out successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   // update user profile
-  const UpdateUser =(userInfo)=>{
-    updateProfile(auth.currentUser, userInfo
-)
-  }
+  const UpdateUser = (userInfo) => {
+    updateProfile(auth.currentUser, userInfo);
+  };
 
   // setUp the UserState
 
   useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    if (currentUser) {
-      setUser(currentUser); 
-    } else {
-      setUser(null);
-    }
-    setLoading(false)
-  });
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
 
-  return () => unsubscribe(); 
-}, []);
-
+    return () => unsubscribe();
+  }, []);
 
   const userInfo = {
     createUser,
@@ -79,6 +98,7 @@ const AuthProvider = ({ children }) => {
     isLoading,
     setLoading,
     UpdateUser,
+    logOut,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
