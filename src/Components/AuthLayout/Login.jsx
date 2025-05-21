@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import SocialLogin from "./SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Utilities/Auth/AuthProvider";
@@ -6,11 +6,10 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {state}=useLocation();
+  const { state } = useLocation();
 
-    
   const { loginUser } = useContext(AuthContext);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -27,11 +26,14 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate(state||'/');
+        navigate(state || "/");
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        setError(errorMessage);
+        Swal.fire({
+          icon: "error",
+          title: error?.code || "Login Error",
+          text: error?.message || "Something went wrong",
+        });
       });
   };
 
@@ -60,7 +62,7 @@ const Login = () => {
             required
           />
           <button>Forget password?</button>
-          {error && <p className="text-xs text-red-500">{error}</p>}
+          {/* {error && <p className="text-xs text-red-500">{error}</p>} */}
 
           <button type="submit" className="btn btn-neutral mt-4">
             Login

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { createUser, UpdateUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [error, serError] = useState("");
+  // const [error, serError] = useState("");
   const handleNewUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,7 +36,11 @@ const Register = () => {
         navigate("/");
       })
       .catch((error) => {
-        serError(error.Message);
+        Swal.fire({
+          icon: "error",
+          title: error?.code || "Login Error",
+          text: error?.message || "Something went wrong",
+        });
       });
   };
   return (
@@ -109,7 +113,7 @@ const Register = () => {
             At least one uppercase letter
           </p>
           <Link to={"/login"}>Already have an account? Login</Link>
-          {error && <p className="text-xs text-red-500">{error}</p>}
+          {/* {error && <p className="text-xs text-red-500">{error}</p>} */}
 
           <button type="submit" className="btn btn-neutral mt-4">
             Register

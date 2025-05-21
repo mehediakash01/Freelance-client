@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Components/AuthLayout/Login";
 import Register from "../Components/AuthLayout/Register";
+import AddTask from "../Pages/AddTask";
 
 export const router = createBrowserRouter([
 
@@ -13,12 +14,16 @@ export const router = createBrowserRouter([
    
     children: [{ index: true, Component: Home },
         {
-            path:'/login',
+            path:'login',
             Component: Login
         },
         {
             path:'register',
             Component:Register
+        },
+        {
+            path:'addTask',
+            Component: AddTask,
         }
         
     ],

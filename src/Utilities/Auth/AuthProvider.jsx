@@ -44,10 +44,11 @@ const AuthProvider = ({ children }) => {
         return user;
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
+        Swal.fire({
+          icon: "error",
+          title: error?.code || "Login Error",
+          text: error?.message || "Something went wrong",
+        });
       });
   };
 
@@ -65,13 +66,17 @@ const AuthProvider = ({ children }) => {
         });
       })
       .catch((error) => {
-        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: error?.code || "Login Error",
+          text: error?.message || "Something went wrong",
+        });
       });
   };
 
   // update user profile
   const UpdateUser = (userInfo) => {
-    updateProfile(auth.currentUser, userInfo);
+    return updateProfile(auth.currentUser, userInfo);
   };
 
   // setUp the UserState

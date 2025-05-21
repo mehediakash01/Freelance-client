@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+
+.active{
+    @apply text-red-500 decoration-2 underline
+}
+.bowlby-one-sc-regular {
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body{
+    font-family: "Bowlby One SC", sans-serif;
+}
