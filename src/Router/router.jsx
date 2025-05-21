@@ -7,41 +7,51 @@ import Register from "../Components/AuthLayout/Register";
 import AddTask from "../Pages/AddTask";
 import PrivateRoute from "./PrivateRoute";
 import BrowseTask from "../Pages/BrowseTask";
-
-
+import TaskDetails from "../Pages/TaskDetails";
 
 export const router = createBrowserRouter([
-
   {
     path: "/",
- element:<Root></Root>,
-   
-    children: [{ index: true, Component: Home },
-        {
-            path:'login',
-            Component: Login
-        },
-        {
-            path:'register',
-            Component:Register
-        },
-        {
-            path:'addTask',
-           
-           element: <PrivateRoute>
+    element: <Root></Root>,
+
+    children: [
+      { index: true, Component: Home },
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+      {
+        path: "addTask",
+
+        element: (
+          <PrivateRoute>
             <AddTask></AddTask>
-           </PrivateRoute>
-        },
-        {
-            path:'BrowseTask',
-           loader:()=>fetch('http://localhost:3000/allTasks'),
-          
-           element: <PrivateRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "BrowseTask",
+        loader: () => fetch("http://localhost:3000/allTasks"),
+
+        element: (
+          <PrivateRoute>
             <BrowseTask></BrowseTask>
-           </PrivateRoute>
-        },
-        
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/BrowseTask/taskDetails/:id",
+         loader: ({params}) => fetch(`http://localhost:3000/taskDetails/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <TaskDetails></TaskDetails>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
-
 ]);
