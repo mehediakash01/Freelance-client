@@ -66,17 +66,17 @@ const Header = () => {
           >
             <div>
               <img
-                className="w-12 h-12 rounded-full ring-0 outline-none transition-all duration-300 ease-in-out hover:ring-2 hover:ring-gray-200 "
+                className="w-12 h-12 rounded-full  "
                 src={user.photoURL}
                 alt=""
               />
             </div>
 
             {isHover && (
-              <div className="absolute -ml-56 mt-1 z-10 bg-gray-400 p-2 rounded-sm space-y-2">
-                <p className="opacity-50">{user.displayName}</p>
-                <p className="opacity-50">{user.email}</p>
-                <button onClick={()=> logOut()} className="font-semibold ">Log-Out</button>
+              <div className="absolute -ml-16 p-4  z-10 bg-[#F5F5F5]  rounded-sm space-y-1">
+                <p className="text-gray-600">{user.displayName}</p>
+               
+                <button onClick={()=> logOut()} className="font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:p-2 hover:rounded-full ease-in duration-300 ">Log-Out</button>
               </div>
             )}
           </div>
