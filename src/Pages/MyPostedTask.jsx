@@ -3,12 +3,12 @@
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../Utilities/Auth/AuthProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router";
 
 const MyPostedTasks = () => {
-  const { user } = useContext(AuthContext);
-  const [myTasks, setMyTasks] = useState([]);
+  const { user,myTasks,setMyTasks } = useContext(AuthContext);
+  
 
   // Fetch user tasks by email
   useEffect(() => {

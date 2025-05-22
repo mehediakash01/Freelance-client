@@ -9,7 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import BrowseTask from "../Pages/BrowseTask";
 import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTask";
-
+import UpdateTask from "../Pages/UpdateTask";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +47,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/BrowseTask/taskDetails/:id",
-         loader: ({params}) => fetch(`http://localhost:3000/taskDetails/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/taskDetails/${params.id}`),
         element: (
           <PrivateRoute>
             <TaskDetails></TaskDetails>
@@ -56,10 +57,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myTasks",
-        
+
         element: (
           <PrivateRoute>
-      <MyPostedTasks></MyPostedTasks>
+            <MyPostedTasks></MyPostedTasks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateTask/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/taskDetails/${params.id}`),
+
+        element: (
+          <PrivateRoute>
+            <UpdateTask></UpdateTask>
           </PrivateRoute>
         ),
       },

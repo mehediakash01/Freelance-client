@@ -17,6 +17,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [myTasks, setMyTasks] = useState([]);
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   // create User
@@ -104,6 +105,8 @@ const AuthProvider = ({ children }) => {
     setLoading,
     UpdateUser,
     logOut,
+    myTasks,
+    setMyTasks,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
