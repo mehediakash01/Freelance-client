@@ -4,7 +4,7 @@ import TaskCard from './TaskCard';
 
 const BrowseTask = () => {
     const allTasks = useLoaderData();
-    console.log(allTasks);
+   
     return (
         <div className='bg-[#F5F5F5] my-12 w-11/12 mx-auto'>
             <div className='text-center py-8 space-y-2'>

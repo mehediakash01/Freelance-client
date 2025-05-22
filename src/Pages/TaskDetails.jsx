@@ -6,20 +6,22 @@ const TaskDetails = () => {
     const allTasks = useLoaderData();
    const {_id, taskTitle, details, category, date, budget,bid } = allTasks;
    const [bidCount,setBidCount]=useState(bid||0);
-console.log(bidCount,_id);
+  
    const handleBidCount =()=>{
+     const newBid = bidCount+1; 
     fetch(`http://localhost:3000/taskDetails/${_id}`, {
         method: 'PATCH',
         headers:{
             'Content-type': 'application/json',
         },
+        body: JSON.stringify({ bid: newBid })
        
 
 
     }).then(res=>res.json()).then(data=>{
 
         if(data.modifiedCount > 0){
-            setBidCount(bidCount+1);
+           setBidCount((prev) => prev + 1);
              Swal.fire('Success!', 'Your bid has been placed.', 'success');
         }
     })
