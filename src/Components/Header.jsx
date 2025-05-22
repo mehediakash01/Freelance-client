@@ -11,7 +11,7 @@ const Header = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/addTask">Add-Task</NavLink>
       <NavLink to="/BrowseTask">Browse-Tasks</NavLink>
-      <NavLink to="/PostedTask">My-Posted-Tasks</NavLink>
+      <NavLink to="/myTasks">My-Posted-Tasks</NavLink>
     </ul>
   );
 

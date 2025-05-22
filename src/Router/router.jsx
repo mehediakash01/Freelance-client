@@ -8,6 +8,8 @@ import AddTask from "../Pages/AddTask";
 import PrivateRoute from "./PrivateRoute";
 import BrowseTask from "../Pages/BrowseTask";
 import TaskDetails from "../Pages/TaskDetails";
+import MyPostedTasks from "../Pages/MyPostedTask";
+
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <TaskDetails></TaskDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myTasks",
+        
+        element: (
+          <PrivateRoute>
+      <MyPostedTasks></MyPostedTasks>
           </PrivateRoute>
         ),
       },
