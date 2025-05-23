@@ -19,7 +19,9 @@ export const router = createBrowserRouter([
     errorElement:<ErrorPage></ErrorPage>,
 
     children: [
-      { index: true, Component: Home },
+      { index: true,
+        loader:()=>fetch('http://localhost:3000/featuredTask'),
+         Component: Home },
       {
         path: "login",
         Component: Login,
@@ -77,6 +79,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+  
     ],
   },
 ]);

@@ -117,6 +117,17 @@ const AddTask = () => {
               name="name"
             />
           </fieldset>
+          <fieldset className="">
+            <label className="mb-2">Bid count</label>
+            <br />
+            <input
+              type="text"
+              className="input w-full"
+              value={0}
+              readOnly
+              name="bid"
+            />
+          </fieldset>
         </div>
 
         <input
