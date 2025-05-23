@@ -7,7 +7,7 @@ const FeaturedTask = ({ sorted }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-11/12 mx-auto bg-gray-100 border-1 border-red-500  rounded-md p-4 relative hover:shadow-2xl  ">
+    <div className="w-11/12 mx-auto bg-gray-100 border-1 border-red-500  rounded-md p-4 relative hover:scale-105 transition-transform duration-300  ">
        
       <p className="bg-white rounded-full text-red-500 absolute text-bold -mt-6 ml-72  text-sm p-1 ">
         {sorted.category}

@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router";
 import FeaturedTask from "./FeaturedTask";
 import { Slide } from "react-awesome-reveal";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import PopularServices from "./PopularServices";
 
 const Home = () => {
   const featuredTasks = useLoaderData();
@@ -35,6 +36,8 @@ const Home = () => {
           ))}
         </Slide>
       </div>
+
+      <PopularServices></PopularServices>
     </div>
   );
 };
