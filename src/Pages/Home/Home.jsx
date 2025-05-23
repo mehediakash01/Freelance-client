@@ -1,11 +1,13 @@
 import React from "react";
-import Banner from "../../Components/Banner";
+
 import { useLoaderData } from "react-router";
 import FeaturedTask from "./FeaturedTask";
 import { Slide } from "react-awesome-reveal";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import PopularServices from "./PopularServices";
 import WhyUse from "./WhyUse";
+
+import Hero from "../../Components/Hero";
 
 
 const Home = () => {
@@ -22,7 +24,8 @@ const Home = () => {
 
   return (
     <div>
-      <Banner></Banner>
+  <Hero></Hero>
+     
       <div className="text-center my-5 space-y-2">
         <h1 className="text-4xl text-red-500"> Featured Tasks</h1>
         <p className="text-gray-600 ">
