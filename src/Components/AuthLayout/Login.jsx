@@ -64,7 +64,7 @@ const Login = () => {
           <button>Forget password?</button>
           {/* {error && <p className="text-xs text-red-500">{error}</p>} */}
 
-          <button type="submit" className="btn btn-neutral mt-4">
+          <button type="submit" className="btn bg-red-500 text-white rounded-full mt-4">
             Login
           </button>
           <Link to={"/register"}>Don't have an account? Register</Link>

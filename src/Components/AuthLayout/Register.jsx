@@ -45,7 +45,7 @@ const Register = () => {
   };
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-8">
-      <h1 className="font-bold text-4xl my-3 text-center">Register Now!</h1>
+      <h1 className="font-bold text-4xl my-3 text-center text-red-500">Register Now!</h1>
       <div className="card-body">
         <form onSubmit={handleNewUser} className="fieldset">
           {/* Name */}
@@ -115,7 +115,7 @@ const Register = () => {
           <Link to={"/login"}>Already have an account? Login</Link>
           {/* {error && <p className="text-xs text-red-500">{error}</p>} */}
 
-          <button type="submit" className="btn btn-neutral mt-4">
+          <button type="submit" className="btn bg-red-500 text-white rounded-full mt-4">
             Register
           </button>
         </form>

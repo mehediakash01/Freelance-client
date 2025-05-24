@@ -44,9 +44,9 @@ export const router = createBrowserRouter([
         loader: () => fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks"),
 
         element: (
-          <PrivateRoute>
+     
             <BrowseTask></BrowseTask>
-          </PrivateRoute>
+         
         ),
       },
       {

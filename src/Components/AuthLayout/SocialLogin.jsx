@@ -23,7 +23,7 @@ const SocialLogin = () => {
   return (
     <div>
       <p className="text-center">or</p>
-      <button onClick={handleGoogle} className="btn btn-info w-full">
+      <button onClick={handleGoogle} className="btn btn-info w-full rounded-full">
         <FcGoogle />
         Continue with Google
       </button>
