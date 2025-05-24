@@ -1,14 +1,12 @@
-
-
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../Utilities/Auth/AuthProvider";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const MyPostedTasks = () => {
-  const { user,myTasks,setMyTasks } = useContext(AuthContext);
-  
+  const { user, myTasks, setMyTasks } = useContext(AuthContext);
+  const [isClicked, setIsClicked] = useState(null);
 
   // Fetch user tasks by email
   useEffect(() => {
@@ -18,6 +16,16 @@ const MyPostedTasks = () => {
         .then((data) => setMyTasks(data));
     }
   }, [user]);
+
+  // bid count 
+
+  const handleBidCount = (id)=>{
+    if (isClicked === id) {
+    setIsClicked(null); 
+  } else {
+    setIsClicked(id);    
+  }
+  }
 
   // Delete Task
   const handleDelete = (id) => {
@@ -56,7 +64,7 @@ const MyPostedTasks = () => {
               <th>Title</th>
               <th>Budget</th>
               <th>Deadline</th>
-              <th>Bids</th>
+
               <th>Actions</th>
             </tr>
           </thead>
@@ -66,8 +74,8 @@ const MyPostedTasks = () => {
                 <td>{task.taskTitle}</td>
                 <td>${task.budget}</td>
                 <td>{task.date}</td>
-                <td>{task.bid || 0}</td>
-                <td className="flex gap-2 justify-center">
+
+                <td className="flex gap-2 justify-center relative">
                   <Link to={`/updateTask/${task._id}`}>
                     <button className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600">
                       Update
@@ -79,11 +87,18 @@ const MyPostedTasks = () => {
                   >
                     Delete
                   </button>
-                  <Link to={`/taskDetails/${task._id}`}>
-                    <button className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
-                      Bids
-                    </button>
-                  </Link>
+
+                  <button onClick={()=>handleBidCount(task._id)} className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
+                    Bids
+                  </button>
+
+                  {isClicked == task._id && 
+                    <div className="bg-red-500 text-white p-2 rounded-full flex items-center absolute right-16 ">
+                    <FaArrowLeft />  {task.bid}
+                    </div>
+                    
+                    
+                  }
                 </td>
               </tr>
             ))}
