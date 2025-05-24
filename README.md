@@ -2,7 +2,7 @@
 
 **RedLink** is a dynamic task posting and bidding platform where users can effortlessly add, browse, and manage freelance tasks. Designed with a modern UI and smooth user experience in mind.
 
-🔴 **Live Site:** [https://your-live-site-url.com](https://your-live-site-url.com)  
+🔴 **Live Site:**  [RedFreelenceLink.surge.sh](https://redfreelencelink.surge.sh/)
 
 
 

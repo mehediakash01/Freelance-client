@@ -117,10 +117,10 @@ const Header = () => {
         ) : (
           <div className="space-x-2">
             <Link to={"/login"}>
-              <button className="btn btn-accent">Login</button>
+              <button className="btn bg-red-500 text-white rounded-full">Login</button>
             </Link>
             <Link to={"/register"}>
-              <button className="btn btn-accent">Register</button>
+              <button className="btn  bg-red-500 text-white rounded-full">Register</button>
             </Link>
           </div>
         )}
