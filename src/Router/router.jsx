@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
 
     children: [
       { index: true,
-        loader:()=>fetch('http://localhost:3000/featuredTask'),
+        loader:()=>fetch('https://freelance-task-marketplace-server-ruddy.vercel.app/featuredTask'),
          Component: Home },
       {
         path: "login",
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "BrowseTask",
-        loader: () => fetch("http://localhost:3000/allTasks"),
+        loader: () => fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks"),
 
         element: (
           <PrivateRoute>
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "/BrowseTask/taskDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/taskDetails/${params.id}`),
+          fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`),
         element: (
           <PrivateRoute>
             <TaskDetails></TaskDetails>
@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
       {
         path: "/updateTask/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/taskDetails/${params.id}`),
+          fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`),
 
         element: (
           <PrivateRoute>

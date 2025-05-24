@@ -14,7 +14,7 @@ const UpdateTask = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updateForm = Object.fromEntries(formData.entries());
-    fetch(`http://localhost:3000/taskDetails/${_id}`, {
+    fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

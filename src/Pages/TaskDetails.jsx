@@ -9,7 +9,7 @@ const TaskDetails = () => {
 
 const handleBidCount = () => {
   const newBid = bidCount+1;
-  fetch(`http://localhost:3000/taskDetails/${_id}`, {
+  fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${_id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

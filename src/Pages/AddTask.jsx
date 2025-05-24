@@ -12,7 +12,7 @@ const AddTask = () => {
     const taskData = Object.fromEntries(formData.entries());
     taskData.bid = Number(taskData.bid);
     // send data to database
-    fetch("http://localhost:3000/addTasks", {
+    fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/addTasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
