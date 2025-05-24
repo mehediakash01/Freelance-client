@@ -10,6 +10,7 @@ const AddTask = () => {
     const form = e.target;
     const formData = new FormData(form);
     const taskData = Object.fromEntries(formData.entries());
+    taskData.bid = Number(taskData.bid);
     // send data to database
     fetch("http://localhost:3000/addTasks", {
       method: "POST",
@@ -121,7 +122,7 @@ const AddTask = () => {
             <label className="mb-2">Bid count</label>
             <br />
             <input
-              type="text"
+              type="number"
               className="input w-full"
               value={0}
               readOnly

@@ -5,29 +5,33 @@ import Swal from "sweetalert2";
 const TaskDetails = () => {
   const allTasks = useLoaderData();
   const { _id, taskTitle, details, category, date, budget, bid } = allTasks;
-  const [bidCount, setBidCount] = useState(bid || 0);
+  const [bidCount, setBidCount] = useState(bid );
 
-  const handleBidCount = () => {
-    const newBid = bidCount + 1;
+const handleBidCount = () => {
+  const newBid = bidCount+1;
+  fetch(`http://localhost:3000/taskDetails/${_id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({bid:newBid}),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.modifiedCount > 0) {
+       
+        setBidCount(newBid)
+        Swal.fire("Success!", "Your bid has been placed.", "success");
+      }
+    });
+};
 
-    fetch(`http://localhost:3000/taskDetails/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ bid: newBid }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          setBidCount((prev) => prev + 1);
-          Swal.fire("Success!", "Your bid has been placed.", "success");
-        }
-      });
-  };
 
   return (
     <div className="max-w-xl mx-auto mt-12 px-4">
+       <h1 className="bg-red-500 text-white text-center my-10 p-3 rounded-full z-10">You bid for {bidCount} opportunities.
+</h1>
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
         <div className="mb-4">
           <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">
