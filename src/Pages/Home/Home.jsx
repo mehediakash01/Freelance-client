@@ -8,6 +8,8 @@ import PopularServices from "./PopularServices";
 import WhyUse from "./WhyUse";
 
 import Hero from "../../Components/Hero";
+import PromoSection from "./PromoSection";
+import NewsLetter from "./NewsLetter";
 
 const Home = () => {
   const featuredTasks = useLoaderData();
@@ -42,8 +44,10 @@ const Home = () => {
       </div>
 
       <WhyUse></WhyUse>
+      <PromoSection></PromoSection>
 
       <PopularServices></PopularServices>
+      <NewsLetter></NewsLetter>
     </div>
   );
 };
