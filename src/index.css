@@ -10,7 +10,7 @@
 }
 
 .active{
-    @apply text-primary decoration-2 underline
+    @apply text-accent decoration-2 underline
 }
 .bowlby-one-sc-regular {
   font-family: "Bowlby One SC", sans-serif;

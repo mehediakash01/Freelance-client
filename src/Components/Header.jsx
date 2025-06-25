@@ -6,17 +6,20 @@ const Header = () => {
   const { user, isLoading, logOut } = useContext(AuthContext);
   const [isHover, setIsHover] = useState(false);
 
-  const links = (
-    <ul className="space-x-4">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/addTask">Add Task</NavLink>
-      <NavLink to="/BrowseTask">Browse Tasks</NavLink>
-      <NavLink to="/myTasks">My Posted Tasks</NavLink>
-      <NavLink to="/about">About Us</NavLink>
-      <NavLink to="/contact">Contact Us</NavLink>
-    </ul>
-  );
-
+ const links = (
+  <ul className="space-x-4">
+    <NavLink to="/">Home</NavLink>
+    {user && (
+      <>
+        <NavLink to="/addTask">Add Task</NavLink>
+        <NavLink to="/myTasks">My Posted Tasks</NavLink>
+      </>
+    )}
+    <NavLink to="/BrowseTask">Browse Tasks</NavLink>
+    <NavLink to="/about">About Us</NavLink>
+    <NavLink to="/contact">Contact Us</NavLink>
+  </ul>
+);
   isLoading && (
     <div>
       <span className="loading loading-bars loading-xs"></span>
@@ -33,8 +36,8 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
+    <div className="navbar  sticky top-0 z-10 bg-white/60 backdrop-blur-md shadow-sm">
+      <div className="navbar-start mx-12">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -59,14 +62,14 @@ const Header = () => {
             {links}
           </ul>
         </div>
-      <img src="https://i.ibb.co/zVqgddhN/page-Logo-removebg-preview.png" className="w-32 " alt="" />
+      <img src="https://i.ibb.co/nsXypkj7/page-Logo-removebg-preview.png" className="w-20 " alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
       {/* ✅ Theme toggle STARTS here */}
-      <div className="navbar-end gap-2">
+      <div className="navbar-end gap-2 mx-12">
         <label className="swap swap-rotate">
           <input type="checkbox" onChange={handleThemeToggle} />
 
