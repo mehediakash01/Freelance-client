@@ -9,7 +9,6 @@ import WhyUse from "./WhyUse";
 
 import Hero from "../../Components/Hero";
 
-
 const Home = () => {
   const featuredTasks = useLoaderData();
   const [text] = useTypewriter({
@@ -24,9 +23,9 @@ const Home = () => {
 
   return (
     <div>
-  <Hero></Hero>
-     
-      <div className="text-center my-5 space-y-2">
+      <Hero></Hero>
+
+      <div className="text-center my-12 space-y-2">
         <h1 className="text-4xl text-primary"> Featured Tasks</h1>
         <p className="text-gray-600 ">
           {text}
@@ -34,14 +33,14 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-12 mx-12">
         <Slide direction="left" cascade damping={0.2} triggerOnce>
           {featuredTasks.map((sorted) => (
             <FeaturedTask key={sorted._id} sorted={sorted}></FeaturedTask>
           ))}
         </Slide>
       </div>
-      
+
       <WhyUse></WhyUse>
 
       <PopularServices></PopularServices>
