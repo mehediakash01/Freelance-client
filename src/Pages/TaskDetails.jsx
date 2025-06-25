@@ -30,11 +30,11 @@ const handleBidCount = () => {
 
   return (
     <div className="max-w-xl mx-auto mt-12 px-4">
-       <h1 className="bg-red-500 text-white text-center my-10 p-3 rounded-full z-10">You bid for {bidCount} opportunities.
+       <h1 className="bg-primary text-secondary text-center my-10 p-3 rounded-full z-10">You bid for {bidCount} opportunities.
 </h1>
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
         <div className="mb-4">
-          <span className="inline-block px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">
+          <span className="inline-block px-3 py-1 bg-primary text-secondary text-xs font-semibold rounded-full">
             {category}
           </span>
         </div>
@@ -59,7 +59,7 @@ const handleBidCount = () => {
         <div className="mt-8">
           <button
             onClick={handleBidCount}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+            className="w-full bg-primary hover:bg-primary text-secondary font-semibold py-3 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
           >
             Place Bid ({bidCount})
           </button>

@@ -64,14 +64,14 @@ const Hero = () => {
               className="w-full h-full object-content"
             />
             <div className="absolute inset-0 bg-black/40 flex items-center px-6 md:px-12">
-              <div className="text-white max-w-md">
+              <div className="text-secondary max-w-md">
                 <h2 className="text-2xl md:text-5xl font-bold leading-tight">
                   {slide.title}
                 </h2>
                 <p className="mt-2 md:mt-4 text-sm md:text-lg">
                   {slide.description}
                 </p>
-                <button className="mt-4 bg-red-500 rounded-full px-4 py-2  btn text-white">
+                <button className="mt-4 bg-primary rounded-full px-4 py-2  btn text-secondary">
                   {slide.buttonText}
                 </button>
               </div>

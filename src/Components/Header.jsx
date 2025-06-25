@@ -9,9 +9,11 @@ const Header = () => {
   const links = (
     <ul className="space-x-4">
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/addTask">Add-Task</NavLink>
-      <NavLink to="/BrowseTask">Browse-Tasks</NavLink>
-      <NavLink to="/myTasks">My-Posted-Tasks</NavLink>
+      <NavLink to="/addTask">Add Task</NavLink>
+      <NavLink to="/BrowseTask">Browse Tasks</NavLink>
+      <NavLink to="/myTasks">My Posted Tasks</NavLink>
+      <NavLink to="/about">About Us</NavLink>
+      <NavLink to="/contact">Contact Us</NavLink>
     </ul>
   );
 
@@ -107,7 +109,7 @@ const Header = () => {
 
                 <button
                   onClick={() => logOut()}
-                  className="font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:p-2 hover:rounded-full ease-in duration-300 "
+                  className="font-semibold text-primary hover:text-secondary hover:bg-primary hover:p-2 hover:rounded-full ease-in duration-300 "
                 >
                   Log-Out
                 </button>
@@ -117,10 +119,10 @@ const Header = () => {
         ) : (
           <div className="space-x-2">
             <Link to={"/login"}>
-              <button className="btn bg-red-500 text-white rounded-full">Login</button>
+              <button className="btn bg-primary text-secondary rounded-full">Login</button>
             </Link>
             <Link to={"/register"}>
-              <button className="btn  bg-red-500 text-white rounded-full">Register</button>
+              <button className="btn  bg-primary text-secondary rounded-full">Register</button>
             </Link>
           </div>
         )}

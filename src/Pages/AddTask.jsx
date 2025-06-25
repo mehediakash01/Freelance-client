@@ -37,7 +37,7 @@ const AddTask = () => {
   return (
     <div className="w-11/12 mx-auto my-10 bg-[#F5F5F5] p-10 rounded-md">
       <form onSubmit={handleTasks}>
-        <h1 className="text-red-500 text-5xl text-center my-5 font-extrabold">
+        <h1 className="text-primary text-5xl text-center my-5 font-extrabold">
           Add a New Task
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-around gap-3">
@@ -132,7 +132,7 @@ const AddTask = () => {
         </div>
 
         <input
-          className="btn rounded-full hover:bg-white hover:text-red-500 bg-red-500 text-white w-full my-3"
+          className="btn rounded-full hover:bg-white hover:text-primary bg-primary text-secondary w-full my-3"
           type="submit"
           value="Add Your Selected Task"
         />

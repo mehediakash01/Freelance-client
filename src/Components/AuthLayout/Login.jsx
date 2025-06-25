@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-8">
-      <h1 className="font-bold text-4xl my-3 text-center text-red-500">Login Now!</h1>
+      <h1 className="font-bold text-4xl my-3 text-center text-primary">Login Now!</h1>
       <div className="card-body">
         <form onSubmit={handleSignIn} className="fieldset">
           {/* email */}
@@ -62,9 +62,9 @@ const Login = () => {
             required
           />
           <button>Forget password?</button>
-          {/* {error && <p className="text-xs text-red-500">{error}</p>} */}
+          {/* {error && <p className="text-xs text-primary">{error}</p>} */}
 
-          <button type="submit" className="btn bg-red-500 text-white rounded-full mt-4">
+          <button type="submit" className="btn bg-primary text-secondary rounded-full mt-4">
             Login
           </button>
           <Link to={"/register"}>Don't have an account? Register</Link>

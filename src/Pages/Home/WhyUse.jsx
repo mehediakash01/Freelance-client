@@ -6,26 +6,26 @@ const WhyUse = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-10">
       
         <div className="md:w-1/2 space-y-6">
-          <h2 className="text-4xl font-bold text-red-600">Why businesses turn to RedLink</h2>
+          <h2 className="text-4xl font-bold text-primary">Why businesses turn to RedLink</h2>
 
           <div className="space-y-4">
             <div>
               <h3 className="text-xl font-semibold text-black flex items-center gap-2">
-                <span className="text-red-600">✪</span> Proof of quality
+                <span className="text-primary">✪</span> Proof of quality
               </h3>
               <p className="text-gray-700">Check any pro’s work samples, client reviews, and identity verification.</p>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold text-black flex items-center gap-2">
-                <span className="text-red-600">$</span> No cost until you hire
+                <span className="text-primary">$</span> No cost until you hire
               </h3>
               <p className="text-gray-700">Interview potential fits, negotiate rates, and only pay for approved work.</p>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold text-black flex items-center gap-2">
-                <span className="text-red-600">✔</span> Safe and secure
+                <span className="text-primary">✔</span> Safe and secure
               </h3>
               <p className="text-gray-700">We protect your data and offer 24/7 support if you need it.</p>
             </div>
@@ -43,7 +43,7 @@ const WhyUse = () => {
       </div>
 
     
-      <div className="mt-12 bg-red-600 text-white p-8 rounded-xl shadow-md text-center">
+      <div className="mt-12 bg-primary text-secondary p-8 rounded-xl shadow-md text-center">
         <h3 className="text-2xl font-semibold">We’re the world’s work marketplace</h3>
         <p className="mt-2 text-xl font-bold">★ 4.9/5</p>
         <p className="text-sm">Clients rate professionals on RedLink</p>

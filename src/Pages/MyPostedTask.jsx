@@ -59,7 +59,7 @@ const MyPostedTasks = () => {
 
       <div className="overflow-x-auto">
         <table className="table w-full text-center border">
-          <thead className="bg-red-400 text-white font-bold">
+          <thead className="bg-red-400 text-secondary font-bold">
             <tr>
               <th>Title</th>
               <th>Budget</th>
@@ -77,23 +77,23 @@ const MyPostedTasks = () => {
 
                 <td className="flex gap-2 justify-center relative">
                   <Link to={`/updateTask/${task._id}`}>
-                    <button className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600">
+                    <button className="btn btn-sm bg-blue-500 text-secondary hover:bg-blue-600">
                       Update
                     </button>
                   </Link>
                   <button
                     onClick={() => handleDelete(task._id)}
-                    className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
+                    className="btn btn-sm bg-primary text-secondary hover:bg-primary"
                   >
                     Delete
                   </button>
 
-                  <button onClick={()=>handleBidCount(task._id)} className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
+                  <button onClick={()=>handleBidCount(task._id)} className="btn btn-sm bg-green-500 text-secondary hover:bg-green-600">
                     Bids
                   </button>
 
                   {isClicked == task._id && 
-                    <div className="bg-red-500 text-white p-2 rounded-full flex items-center absolute right-16 ">
+                    <div className="bg-primary text-secondary p-2 rounded-full flex items-center absolute right-16 ">
                     <FaArrowLeft />  {task.bid}
                     </div>
                     

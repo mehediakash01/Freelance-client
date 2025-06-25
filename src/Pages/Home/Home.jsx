@@ -27,7 +27,7 @@ const Home = () => {
   <Hero></Hero>
      
       <div className="text-center my-5 space-y-2">
-        <h1 className="text-4xl text-red-500"> Featured Tasks</h1>
+        <h1 className="text-4xl text-primary"> Featured Tasks</h1>
         <p className="text-gray-600 ">
           {text}
           <Cursor></Cursor>

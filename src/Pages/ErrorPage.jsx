@@ -23,7 +23,7 @@ const ErrorPage = () => {
       <p className="mb-6 text-base-content text-lg max-w-md">
         Sorry, the page you're looking for doesn't exist or has been moved.
       </p>
-      <Link to="/" className="btn bg-red-500 text-white rounded-full">
+      <Link to="/" className="btn bg-primary text-secondary rounded-full">
         Go Home
       </Link>
     </div>

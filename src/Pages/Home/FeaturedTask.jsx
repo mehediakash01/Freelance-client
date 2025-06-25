@@ -10,7 +10,7 @@ const FeaturedTask = ({ sorted }) => {
     <div className="w-11/12 mx-auto min-h-[300px] bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 flex flex-col justify-between">
       <div>
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-red-500 bg-red-100 px-3 py-1 rounded-full">
+          <span className="text-sm font-medium text-primary bg-red-100 px-3 py-1 rounded-full">
             {sorted.category}
           </span>
           <span className="text-sm text-gray-500">📅 {sorted.date}</span>
@@ -30,7 +30,7 @@ const FeaturedTask = ({ sorted }) => {
 
       <button
         onClick={() => navigate(`/BrowseTask/taskDetails/${sorted._id}`)}
-        className="w-full mt-6 flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white font-medium py-2 rounded-full transition duration-300"
+        className="w-full mt-6 flex items-center justify-center gap-2 bg-primary hover:bg-primary text-secondary font-medium py-2 rounded-full transition duration-300"
       >
         <FaArrowLeftLong />
         View Details

@@ -1,9 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #6366F1 ;
+  --color-secondary: #F8FAFC ;
+  --color-accent: #10B981 ;
+}
 
 .active{
-    @apply text-red-500 decoration-2 underline
+    @apply text-primary decoration-2 underline
 }
 .bowlby-one-sc-regular {
   font-family: "Bowlby One SC", sans-serif;

@@ -8,7 +8,7 @@ const BrowseTask = () => {
     return (
         <div className='bg-[#F5F5F5] my-12 w-11/12 mx-auto'>
             <div className='text-center py-8 space-y-2'>
-                <h1 className='text-red-600 text-4xl font-bold'>Find Tasks That Match Your Skills</h1>
+                <h1 className='text-primary text-4xl font-bold'>Find Tasks That Match Your Skills</h1>
                 <p className='text-gray-400'>Browse tasks in Web Development, Design, Writing, and more. 
                     Submit proposals and grow your freelance profile</p>
             </div>

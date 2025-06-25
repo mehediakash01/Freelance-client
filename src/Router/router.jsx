@@ -11,6 +11,8 @@ import BrowseTask from "../Pages/BrowseTask";
 import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTask";
 import UpdateTask from "../Pages/UpdateTask";
+import AboutUs from "../Pages/AboutUs";
+import Contact from "../Pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: 'about',
+        Component: AboutUs,
+      },
+      {
+        path: 'contact',
+        Component: Contact,
+      }
   
     ],
   },

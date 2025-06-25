@@ -7,9 +7,9 @@ const TaskCard = ({ task }) => {
   const { _id, taskTitle, details, category, date, budget } = task;
 
   return (
-    <div className="border border-red-500 rounded-2xl w-11/12 mx-auto p-5 my-5 hover:shadow-2xl relative bg-white">
+    <div className="border border-accent rounded-2xl w-11/12 mx-auto p-5 my-5 hover:shadow-2xl relative bg-white">
       {/* Category Badge */}
-      <span className="bg-white border border-red-500 rounded-full text-red-500 px-3 py-1 text-xs absolute -top-3 left-4">
+      <span className="bg-white border border-accent rounded-full text-primary px-3 py-1 text-xs absolute -top-3 left-4">
         🏷️ {category}
       </span>
 
@@ -34,7 +34,7 @@ const TaskCard = ({ task }) => {
       {/* View Details Button */}
       <button
         onClick={() => navigate(`/BrowseTask/taskDetails/${_id}`)}
-        className="mt-4 btn rounded-full w-full bg-red-500 text-white hover:bg-white hover:text-red-500 border hover:border-red-500 flex items-center justify-center gap-2"
+        className="mt-4 btn rounded-full w-full bg-primary text-secondary hover:bg-white hover:text-primary border hover:border-accent flex items-center justify-center gap-2"
       >
         View Details <FaArrowRightLong />
       </button>
