@@ -11,7 +11,7 @@ const MyPostedTasks = () => {
   // Fetch user tasks by email
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/myTasks/${user.email}`)
+      fetch(`http://localhost:3000/myTasks/${user.email}`)
         .then((res) => res.json())
         .then((data) => setMyTasks(data));
     }
@@ -39,7 +39,7 @@ const MyPostedTasks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/deleteTask/${id}`, {
+        fetch(`http://localhost:3000/deleteTask/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -76,7 +76,7 @@ const MyPostedTasks = () => {
                 <td>{task.date}</td>
 
                 <td className="flex gap-2 justify-center relative">
-                  <Link to={`/updateTask/${task._id}`}>
+                  <Link to={`/dashboard/updateTask/${task._id}`}>
                     <button className="btn btn-sm bg-accent  ">
                       Update
                     </button>

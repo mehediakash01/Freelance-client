@@ -1,36 +1,36 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Utilities/Auth/AuthProvider";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const UpdateTask = () => {
   const { user } = useContext(AuthContext);
   const task = useLoaderData();
+  const {id} = useParams();
 
-  const { _id, taskTitle, details, category, date, budget } = task;
+  const {  taskTitle, details, category, date, budget } = task;
   const navigate = useNavigate();
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const updateForm = Object.fromEntries(formData.entries());
-    fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateForm),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
+   
+
+    
+    axios.patch(`http://localhost:3000/taskUpdate/${id}`,updateForm).then(res=>{
+      console.log(res.data);
+       if (res.data.modifiedCount > 0) {
+          
           Swal.fire("Updated!", "Your task has been updated.", "success").then(
             () => {
-              navigate("/myTasks");
+             navigate("/dashboard/myTasks");
             }
           );
         }
-      });
+    })
+      
   };
   return (
     <div className="w-11/12 mx-auto my-10 bg-[#F5F5F5] p-10 rounded-md">
@@ -63,9 +63,11 @@ const UpdateTask = () => {
               <option value="" disabled>
                 Pick your field
               </option>
-              <option value="web-development">Web Development</option>
-              <option value="graphic-design">Graphic Design</option>
-              <option value="writing-marketing">Writing & Marketing</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Content Writing">Content Writing</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Backend Development">Backend Development</option>
             </select>
           </fieldset>
 

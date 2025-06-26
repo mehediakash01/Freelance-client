@@ -6,42 +6,50 @@ const DashboardOverview = () => {
   const [myTasks, setMyTasks] = useState([]);
   const [allTasks, setAllTasks] = useState([]);
 
+  // ✅ Fetch user's own tasks
   useEffect(() => {
     if (user?.email) {
-      fetch(
-        `https://freelance-task-marketplace-server-ruddy.vercel.app/myTasks/${user.email}`
-      )
-        .then((res) => res.json())
-        .then((data) => setMyTasks(data));
+      const encodedEmail = encodeURIComponent(user.email); // 🔒 encode email
+      fetch(`http://localhost:3000/myTasks/${encodedEmail}`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Failed to fetch user tasks");
+          return res.json();
+        })
+        .then((data) => setMyTasks(data))
+        .catch((err) => console.error("Error fetching myTasks:", err));
     }
   }, [user]);
 
+  // ✅ Fetch all tasks
   useEffect(() => {
-    fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks")
-      .then((res) => res.json())
-      .then((data) => setAllTasks(data));
+    fetch("http://localhost:3000/allTasks")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch all tasks");
+        return res.json();
+      })
+      .then((data) => setAllTasks(data))
+      .catch((err) => console.error("Error fetching allTasks:", err));
   }, []);
 
   const totalBids = allTasks.reduce((sum, task) => sum + (task.bid || 0), 0);
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold mb-4 text-primary">
-        Dashboard Overview
-      </h2>
+      <h2 className="text-3xl font-bold mb-4 text-primary">Dashboard Overview</h2>
 
+      {/* ✅ User Profile Section */}
       <div className="bg-white rounded-lg shadow p-4 mb-8">
         <h3 className="text-xl font-semibold mb-2">
-          Welcome, {user?.displayName} 👋
+          Welcome, {user?.displayName || "User"} 👋
         </h3>
         <p>Email: {user?.email}</p>
-       
+        {user?.photoURL && (
           <img
             src={user.photoURL}
             alt="Profile"
             className="w-20 h-20 rounded-full mt-4"
           />
-        
+        )}
       </div>
 
       {/* ✅ Stats Cards */}
