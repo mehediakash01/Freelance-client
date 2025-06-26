@@ -52,6 +52,17 @@ const AddTask = () => {
               required
             />
           </fieldset>
+          <fieldset className="">
+            <label className="mb-2">Task image</label>
+            <br />
+            <input
+              type="link"
+              className="input w-full"
+              name="taskImg"
+              placeholder="TaskImgUrl"
+              required
+            />
+          </fieldset>
 
           <fieldset className="">
             <label className="mb-2">Category</label>
@@ -64,9 +75,11 @@ const AddTask = () => {
               <option value="" disabled>
                 Pick your field
               </option>
-              <option value="web-development">Web Development</option>
-              <option value="graphic-design">Graphic Design</option>
-              <option value="writing-marketing">Writing & Marketing</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Content Writing">Content Writing</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Backend Development">Backend Development</option>
             </select>
           </fieldset>
 

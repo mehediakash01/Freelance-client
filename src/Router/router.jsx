@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
         path: "/BrowseTask/taskDetails/:id",
         loader: ({ params }) =>
           fetch(
-            `https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`
+            `https://freelance-task-marketplace-server-ruddy.vercel.app/taskDetails/${params.id}`
           ),
         element: (
           <PrivateRoute>
