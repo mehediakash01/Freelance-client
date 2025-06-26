@@ -9,7 +9,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
+    <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 items-center">
       <nav>
         <img
           src="https://i.ibb.co/nsXypkj7/page-Logo-removebg-preview.png"

@@ -2,7 +2,8 @@
 @plugin "daisyui";
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @plugin "daisyui/theme" {
-  name: "light";
+
+  themes: light --default, dark --prefersdark;
   default: true;
   --color-primary: #6366F1 ;
   --color-secondary: #F8FAFC ;

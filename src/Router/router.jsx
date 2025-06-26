@@ -13,17 +13,25 @@ import MyPostedTasks from "../Pages/MyPostedTask";
 import UpdateTask from "../Pages/UpdateTask";
 import AboutUs from "../Pages/AboutUs";
 import Contact from "../Pages/Contact";
+import { tasksLoader } from "../Utilities/tasksLoader";
+import Dashboard from "../Components/DashBoard/Dashboard";
+import DashboardOverview from "../Components/DashBoard/DashboardOverview";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
 
     children: [
-      { index: true,
-        loader:()=>fetch('https://freelance-task-marketplace-server-ruddy.vercel.app/featuredTask'),
-         Component: Home },
+      {
+        index: true,
+        loader: () =>
+          fetch(
+            "https://freelance-task-marketplace-server-ruddy.vercel.app/featuredTask"
+          ),
+        Component: Home,
+      },
       {
         path: "login",
         Component: Login,
@@ -31,6 +39,66 @@ export const router = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+
+      {
+        path: "BrowseTask",
+        // loader: () => fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks"),
+        loader: tasksLoader,
+
+        element: <BrowseTask></BrowseTask>,
+      },
+      {
+        path: "/BrowseTask/taskDetails/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <TaskDetails></TaskDetails>
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "/updateTask/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`
+          ),
+
+        element: (
+          <PrivateRoute>
+            <UpdateTask></UpdateTask>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "about",
+        Component: AboutUs,
+      },
+      {
+        path: "contact",
+        Component: Contact,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      { index: true, element: <DashboardOverview /> }, // default page
+      {
+        path: "BrowseTask",
+        // loader: () => fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks"),
+        loader: tasksLoader,
+
+        element: <BrowseTask></BrowseTask>,
       },
       {
         path: "addTask",
@@ -42,27 +110,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "BrowseTask",
-        loader: () => fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks"),
-
-        element: (
-     
-            <BrowseTask></BrowseTask>
-         
-        ),
-      },
-      {
-        path: "/BrowseTask/taskDetails/:id",
-        loader: ({ params }) =>
-          fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <TaskDetails></TaskDetails>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/myTasks",
+        path: "myTasks",
 
         element: (
           <PrivateRoute>
@@ -70,26 +118,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/updateTask/:id",
-        loader: ({ params }) =>
-          fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/${params.id}`),
-
-        element: (
-          <PrivateRoute>
-            <UpdateTask></UpdateTask>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: 'about',
-        Component: AboutUs,
-      },
-      {
-        path: 'contact',
-        Component: Contact,
-      }
-  
     ],
   },
 ]);
