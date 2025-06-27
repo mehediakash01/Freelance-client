@@ -34,7 +34,7 @@ console.log(search);
   return (
     <div className="bg-[#F5F5F5] my-12 w-11/12 mx-auto">
       <div className="text-center py-8 space-y-2">
-        <h1 className="text-primary text-4xl font-bold">
+        <h1 className="text-primary text-2xl lg:text-4xl font-bold">
           Find Tasks That Match Your Skills
         </h1>
         <p className="text-gray-400">

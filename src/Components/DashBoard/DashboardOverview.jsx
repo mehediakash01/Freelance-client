@@ -38,7 +38,7 @@ const DashboardOverview = () => {
       <h2 className="text-3xl font-bold mb-4 text-primary">Dashboard Overview</h2>
 
       {/* ✅ User Profile Section */}
-      <div className="bg-white rounded-lg shadow p-4 mb-8">
+      <div className="bg-white text-primary rounded-lg shadow p-4 mb-8">
         <h3 className="text-xl font-semibold mb-2">
           Welcome, {user?.displayName || "User"} 👋
         </h3>

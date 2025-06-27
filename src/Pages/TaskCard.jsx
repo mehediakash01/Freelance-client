@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 const TaskCard = ({ task }) => {
   const navigate = useNavigate();
-  const { _id, taskTitle, details, category, date, budget, taskImg } = task;
+  const { _id, taskTitle, details, category,  budget, taskImg } = task;
 
   return (
     <div className="w-full max-w-md mx-auto bg-white border border-accent rounded-2xl shadow-sm hover:shadow-2xl transition duration-300 overflow-hidden">
@@ -35,7 +35,7 @@ const TaskCard = ({ task }) => {
         </p>
 
         <div className="text-sm font-medium text-black space-y-1">
-          <p>⏰ Deadline: <span className="text-gray-600">{date}</span></p>
+          {/* <p>⏰ Deadline: <span className="text-gray-600">{date}</span></p> */}
           <p>💸 Budget: <span className="text-gray-600">{budget} TK</span></p>
         </div>
 

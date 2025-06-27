@@ -26,10 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () =>
-          fetch(
-            "http://localhost:3000/featuredTask"
-          ),
+        loader: () => fetch("http://localhost:3000/featuredTask"),
         Component: Home,
       },
       {
@@ -44,16 +41,13 @@ export const router = createBrowserRouter([
       {
         path: "BrowseTask",
         loader: () => fetch("http://localhost:3000/allTasks"),
-   
 
         element: <BrowseTask></BrowseTask>,
       },
       {
         path: "/BrowseTask/taskDetails/:id",
         loader: ({ params }) =>
-          fetch(
-            `http://localhost:3000/taskDetails/${params.id}`
-          ),
+          fetch(`http://localhost:3000/taskDetails/${params.id}`),
         element: (
           <PrivateRoute>
             <TaskDetails></TaskDetails>
@@ -73,6 +67,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    errorElement: <ErrorPage></ErrorPage>,
     element: (
       <PrivateRoute>
         <Dashboard />
@@ -83,7 +78,6 @@ export const router = createBrowserRouter([
       {
         path: "BrowseTask",
         loader: () => fetch("http://localhost:3000/allTasks"),
-      
 
         element: <BrowseTask></BrowseTask>,
       },
@@ -105,19 +99,16 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-     {
-  path: "updateTask/:id",
-  loader: ({params}) =>
-    fetch(
-      `http://localhost:3000/taskDetails/${params.id}`
-    ),
-  element: (
-    <PrivateRoute>
-      <UpdateTask />
-    </PrivateRoute>
-  ),
-},
-
+      {
+        path: "updateTask/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/taskDetails/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateTask />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

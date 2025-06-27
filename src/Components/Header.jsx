@@ -60,7 +60,7 @@ const Header = () => {
           <img
             src="https://i.ibb.co/nsXypkj7/page-Logo-removebg-preview.png"
             alt="Logo"
-            className="w-20"
+            className="w-20 hidden lg:block"
           />
         </Link>
       </div>

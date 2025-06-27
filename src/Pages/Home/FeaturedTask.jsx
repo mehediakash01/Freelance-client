@@ -7,13 +7,13 @@ const FeaturedTask = ({ sorted }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-11/12 mx-auto min-h-[300px] bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 flex flex-col justify-between">
+    <div className="w-11/12 mx-auto h-full bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 flex flex-col justify-between">
       <div>
         <div className="flex justify-between items-center mb-4">
           <span className="text-sm font-medium text-primary bg-red-100 px-3 py-1 rounded-full">
             {sorted.category}
           </span>
-          <span className="text-sm text-gray-500">📅 {sorted.date}</span>
+         
         </div>
 
         <div className="flex items-center gap-2 mb-3 text-gray-700 font-medium">
@@ -21,7 +21,9 @@ const FeaturedTask = ({ sorted }) => {
           <span>Posted by: {sorted.name}</span>
         </div>
 
-        <p className="text-gray-800 mb-3">💬 {sorted.details}</p>
+            <p className="text-gray-800 mb-3">
+          💬 {sorted.details?.slice(0, 80)}...
+        </p>
 
         <p className="text-gray-800 font-semibold">
           💰 Budget: <span className="text-black">{sorted.budget} Tk</span>
