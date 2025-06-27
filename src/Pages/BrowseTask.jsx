@@ -10,13 +10,13 @@ const BrowseTask = () => {
   const [search, setSearch] = useState("");
   const [taskData, setTaskData] = useState([]);
   const [loading, setLoading] = useState(false);
-
+const [sortOrder, setSortOrder] = useState("latest");
   useEffect(() => {
     setLoading(true);
 console.log(search);
     axios
       .get("http://localhost:3000/allTasks", {
-        params: { search },
+        params: { search, sort: sortOrder },
       })
       .then((res) => {
        
@@ -28,7 +28,7 @@ console.log(search);
       .finally(() => {
         setLoading(false);
       });
-  }, [search]);
+  }, [search,sortOrder]);
 
   return (
     <div className="bg-[#F5F5F5] my-12 w-11/12 mx-auto">
@@ -53,11 +53,11 @@ console.log(search);
           />
        
 
-        {/* <select className="select select-bordered w-fit mr-3">
+        <select value={sortOrder} onChange={e=>setSortOrder(e.target.value)} className="select select-bordered w-fit mr-3">
           <option value="latest">Latest</option>
           <option value="budget_asc">Budget: Low to High</option>
           <option value="budget_desc">Budget: High to Low</option>
-        </select> */}
+        </select>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-8">

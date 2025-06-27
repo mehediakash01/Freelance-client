@@ -11,6 +11,7 @@ const AddTask = () => {
     const formData = new FormData(form);
     const taskData = Object.fromEntries(formData.entries());
     taskData.bid = Number(taskData.bid);
+    taskData.budget = Number(taskData.budget);
     // send data to database
     fetch("http://localhost:3000/addTasks", {
       method: "POST",
@@ -102,7 +103,7 @@ const AddTask = () => {
             <label className="mb-2">budget</label>
             <br />
             <input
-              type="text"
+              type="number"
               className="input w-full"
               name="budget"
               placeholder="Enter your Budget"
