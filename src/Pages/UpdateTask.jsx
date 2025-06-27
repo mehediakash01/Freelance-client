@@ -19,7 +19,7 @@ const UpdateTask = () => {
    
 
     
-    axios.patch(`http://localhost:3000/taskUpdate/${id}`,updateForm).then(res=>{
+    axios.patch(`https://freelance-task-marketplace-server-ruddy.vercel.app/taskUpdate/${id}`,updateForm).then(res=>{
       console.log(res.data);
        if (res.data.modifiedCount > 0) {
           

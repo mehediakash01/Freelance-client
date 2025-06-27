@@ -10,7 +10,7 @@ const DashboardOverview = () => {
   useEffect(() => {
     if (user?.email) {
       const encodedEmail = encodeURIComponent(user.email); // 🔒 encode email
-      fetch(`http://localhost:3000/myTasks/${encodedEmail}`)
+      fetch(`https://freelance-task-marketplace-server-ruddy.vercel.app/myTasks/${encodedEmail}`)
         .then((res) => {
           if (!res.ok) throw new Error("Failed to fetch user tasks");
           return res.json();
@@ -22,7 +22,7 @@ const DashboardOverview = () => {
 
   // ✅ Fetch all tasks
   useEffect(() => {
-    fetch("http://localhost:3000/allTasks")
+    fetch("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch all tasks");
         return res.json();

@@ -8,20 +8,20 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-10">
           {/* Contact Info Section */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center shadow-sm rounded-md p-5">
             <h2 className="text-2xl font-semibold mb-4">How can we help?</h2>
-            <p className="text-gray-700 mb-4">
+            <p className=" mb-4">
               If you have any questions, issues, or suggestions, feel free to reach out to our support team.
             </p>
 
-            <ul className="space-y-3 text-gray-800">
+            <ul className="space-y-3 s">
               <li>
                 📧 Email:{" "}
                 <a
                   href="mailto:support@yourfreelanceapp.com"
                   className="text-primary underline"
                 >
-                  support@yourfreelanceapp.com
+                  support@mehedi.akash.dev.com
                 </a>
               </li>
               <li>📞 Phone: +880-1234-567890</li>

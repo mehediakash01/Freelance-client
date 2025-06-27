@@ -16,7 +16,7 @@ const [sortOrder, setSortOrder] = useState("latest");
     setLoading(true);
 console.log(search);
     axios
-      .get("http://localhost:3000/allTasks", {
+      .get("https://freelance-task-marketplace-server-ruddy.vercel.app/allTasks", {
         params: { search, sort: sortOrder },
       })
       .then((res) => {
