@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
 import axios from "axios";
 import Loading from "./Loading";
+import Empty from "./Empty";
 
 const BrowseTask = () => {
   // const allTasks = useLoaderData();
@@ -60,13 +61,13 @@ console.log(search);
         </select>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-8  ">
         {loading ? (
           <Loading />
         ) : taskData.length === 0 ? (
-          <p className="text-center col-span-4 text-gray-400 text-lg">
-            No tasks found for your search.
-          </p>
+        <div className="col-span-full flex justify-center items-center my-12">
+      <Empty setSearch={setSearch} />
+    </div>
         ) : (
           taskData.map((task) => <TaskCard key={task._id} task={task} />)
         )}
